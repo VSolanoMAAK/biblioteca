@@ -3,123 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca - Instituto Universitas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Biblioteca</title>
     <style>
-        :root {
-            --azul-google: #0f6cbf;
-            --gris-fondo: #f8f9fa;
-        }
-        body {
-            font-family: 'Open Sans', sans-serif;
+        * {
             margin: 0;
-            background-color: white;
+            padding: 0;
+            box-sizing: border-box;
         }
-        /* Barra de Navegación */
-        nav {
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #1565C0;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background-color: #1565C0;
+            padding: 16px 40px;
             display: flex;
-            justify-content:空间-between;
             align-items: center;
-            padding: 10px 5%;
-            border-bottom: 1px solid #e0e0e0;
+            gap: 16px;
         }
-        .logo { font-weight: bold; color: #5f6368; font-size: 20px; }
-        
-        /* Banner Principal (El que ves en Google Sites) */
-        .hero {
-            background-color: var(--azul-google);
+
+        .logo-mentes {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-mentes img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .site-title {
+            font-size: 22px;
             color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .hero h1 { font-size: 2.5rem; margin: 0; font-weight: 400; }
-
-        /* Contenedor de la Biblioteca */
-        .content {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+            font-weight: 400;
         }
 
-        /* Grid Responsivo (Se ajusta solo) */
-        .grid-biblioteca {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        /* Main Content */
+        .main-container {
+            background: white;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 60px 80px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .item-recurso {
-            border: 1px solid #dadce0;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: 0.2s;
-        }
-        .item-recurso:hover { box-shadow: 0 1px 3px rgba(60,64,67,0.3); }
-        
-        .item-imagen {
-            height: 180px;
-            background-color: #eee;
+        /* Banner Section */
+        .banner-section {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #999;
+            justify-content: space-between;
+            margin-bottom: 80px;
+            gap: 80px;
         }
 
-        .item-texto { padding: 20px; }
-        .item-texto h3 { margin: 0 0 10px 0; color: #202124; }
-        .item-texto p { color: #5f6368; font-size: 14px; line-height: 1.5; }
+        .banner-logo {
+            flex: 0 0 280px;
+        }
 
-        /* Botón estilo Google */
-        .btn-google {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 24px;
-            border: 1px solid #dadce0;
-            border-radius: 4px;
-            color: var(--azul-google);
+        .banner-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .banner-title {
+            flex: 1;
+            font-size: 32px;
+            color: #C41E3A;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        /* Documents Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .document-card {
+            display: block;
             text-decoration: none;
-            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .btn-google:hover { background-color: #f6fafe; }
 
-        /* Ajuste para Móvil */
+        .document-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .document-preview {
+            width: 100%;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .document-card:hover .document-preview {
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .document-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .documents-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                margin: 0;
+                padding: 40px 24px;
+                box-shadow: none;
+            }
+
+            .banner-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .banner-logo {
+                flex: none;
+                max-width: 250px;
+            }
+
+            .banner-title {
+                font-size: 26px;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
         @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-            .grid-biblioteca { grid-template-columns: 1fr; }
+            .main-container {
+                padding: 32px 16px;
+            }
+
+            .banner-title {
+                font-size: 22px;
+            }
+
+            header {
+                padding: 12px 16px;
+            }
+
+            .logo-mentes {
+                width: 40px;
+                height: 40px;
+            }
+
+            .site-title {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
-
-<nav>
-    <div class="logo">Instituto Universitas</div>
-</nav>
-
-<section class="hero">
-    <h1>BIBLIOTECA</h1>
-</section>
-
-<div class="content">
-    <div class="grid-biblioteca">
-        <div class="item-recurso">
-            <div class="item-imagen">IMAGEN / ICONO</div>
-            <div class="item-texto">
-                <h3>Prevención de Violencia Digital</h3>
-                <p>Recursos y guías para la capacitación en el estado de Puebla.</p>
-                <a href="TU_LINK_DE_DRIVE" class="btn-google">Abrir Recurso</a>
-            </div>
+    <header>
+        <div class="logo-mentes">
+            <img src="https://i.imgur.com/cCp5uKN.png" alt="Creadores de Mentes">
         </div>
-        
-        <div class="item-recurso">
-            <div class="item-imagen">IMAGEN / ICONO</div>
-            <div class="item-texto">
-                <h3>Manual de Usuario</h3>
-                <p>Instrucciones detalladas para el acceso a la plataforma.</p>
-                <a href="TU_LINK_DE_DRIVE" class="btn-google">Descargar</a>
+        <span class="site-title">Biblioteca</span>
+    </header>
+
+    <div class="main-container">
+        <div class="banner-section">
+            <div class="banner-logo">
+                <img src="https://i.imgur.com/o8wUtk1.png" alt="Instituto Universitas">
             </div>
+            <h1 class="banner-title">Servicio de capacitación especializada para la prevención y atención de la violencia digital, dirigido a servidores públicos del estado de Puebla</h1>
+        </div>
+
+        <div class="documents-grid">
+            <a href="https://drive.google.com/file/d/1ZDoZt-nXGu8pZzNtFZWq3bbybWVXBpoa/view?usp=drive_link" class="document-card" target="_blank">
+                <div class="document-preview">
+                    <!-- DOCUMENTO 1: Coloca aquí el URL de la imagen de vista previa -->
+                    <img src="https://i.imgur.com/dk9Pyau.png" alt="Material Didáctico 1">
+                </div>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1Fq6fl6_cxoDZP1HsMNAMJ6b91ksUfaAy/view?usp=drive_link" class="document-card" target="_blank">
+                <div class="document-preview">
+                    <!-- DOCUMENTO 2: Coloca aquí el URL de la imagen de vista previa -->
+                    <img src="https://i.imgur.com/JODIFEU.png" alt="Material Didáctico 2">
+                </div>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1Ixv-UeP5G62363jSXRr4vmVTw3wNTdQ3/view?usp=drive_link" class="document-card" target="_blank">
+                <div class="document-preview">
+                    <!-- DOCUMENTO 3: Coloca aquí el URL de la imagen de vista previa -->
+                    <img src="https://i.imgur.com/WInaRyY.png" alt="Material Didáctico 3">
+                </div>
+            </a>
+
+            <a href="https://drive.google.com/file/d/19viqt8Wxm6kIx9C7nvq_tmDfBE5HjtWA/view?usp=drive_link" class="document-card" target="_blank">
+                <div class="document-preview">
+                    <!-- DOCUMENTO 4: Coloca aquí el URL de la imagen de vista previa -->
+                    <img src="https://i.imgur.com/sHAFtge.png" alt="Material Didáctico 4">
+                </div>
+            </a>
         </div>
     </div>
-</div>
-
 </body>
 </html>
